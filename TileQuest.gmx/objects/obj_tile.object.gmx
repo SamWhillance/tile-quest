@@ -8,6 +8,102 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Init
+
+scr_tile_update_neighbours();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Tile pressed
+
+// Check for player movement
+
+var moved = false;
+
+if (tileRight != noone){
+    if (instance_position(tileRight.x, tileRight.y, obj_player)){
+        if (tileRight.pathLeft &amp;&amp; pathRight){
+            obj_player.x = x;
+            obj_player.y = y;
+            moved = true;
+        }
+    }
+}
+
+if (tileAbove != noone){
+    if (instance_position(tileAbove.x, tileAbove.y, obj_player)){
+        if (tileAbove.pathDown &amp;&amp; pathUp){
+            obj_player.x = x;
+            obj_player.y = y;
+            moved = true;
+        }
+    }
+}
+
+if (tileLeft != noone){
+    if (instance_position(tileLeft.x, tileLeft.y, obj_player)){
+        if (tileLeft.pathRight &amp;&amp; pathLeft){
+            obj_player.x = x;
+            obj_player.y = y;
+            moved = true;
+        }
+    }
+}
+
+if (tileBelow != noone){
+    if (instance_position(tileBelow.x, tileBelow.y, obj_player)){
+        if (tileBelow.pathUp &amp;&amp; pathDown){
+            obj_player.x = x;
+            obj_player.y = y;
+            moved = true;
+        }
+    }
+}
+
+if (moved){
+    scr_move_ghosts();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>

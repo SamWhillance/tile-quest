@@ -74,10 +74,16 @@ if (dragging){
     if (scr_tile_is_valid_placement(rx, ry, top)){
         
         // Create tile object
-        scr_place_tile(rx, ry, top.sprite_index, top.image_angle);
+        var t = scr_place_tile(rx, ry, top.sprite_index, top.image_angle);
+        
+        if (top.hasGhost){
+            instance_create(rx, ry, obj_ghost);
+        }
         
         // Remove tile from deck
         scr_delete_top_tile_from_deck(id);
+        
+        scr_move_ghosts();
     }
 }
 </string>
@@ -138,6 +144,10 @@ if (ds_list_size(tileList) &gt;= 1 &amp;&amp; top != noone &amp;&amp; instance_e
     if (dragging){
         if (ds_list_size(tileList) &gt;= 2 &amp;&amp; second != noone &amp;&amp; instance_exists(second)){
             draw_sprite_ext(second.sprite_index, 0, x, y, 1, 1, second.image_angle, c_white, 1); 
+            
+            if (second.hasGhost){
+                draw_sprite_ext(spr_ghost, 0, x, y, 0.5, 0.5, 0, c_white, 0.75);
+            }
         }
         
         var rx = scr_gridify(mouse_x);
@@ -145,15 +155,22 @@ if (ds_list_size(tileList) &gt;= 1 &amp;&amp; top != noone &amp;&amp; instance_e
         var color = c_white;
         if (!scr_tile_is_valid_placement(rx, ry, top))color = c_red;
         draw_sprite_ext(top.sprite_index, 0, rx, ry, 1.1, 1.1, top.image_angle+5, color, 0.9);
+        
+        if (top.hasGhost){
+            draw_sprite_ext(spr_ghost, 0, rx, ry, 1, 1, 0, c_white, 0.75);
+        }
     } else {
         draw_sprite_ext(top.sprite_index, 0, x, y, 1, 1, top.image_angle, c_white, 1); 
+        if (top.hasGhost){
+            draw_sprite_ext(spr_ghost, 0, x, y, 0.5, 0.5, 0, c_white, 0.75);
+        }
     }
 }
-
+/*
 for (var i=0; i&lt;ds_list_size(tileList);i++){
     draw_set_color(c_white);
     draw_text(32, 96+(i*24), sprite_get_name(ds_list_find_value(tileList, i).sprite_index));
-}
+}*/
 </string>
           </argument>
         </arguments>

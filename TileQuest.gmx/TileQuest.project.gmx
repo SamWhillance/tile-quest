@@ -6,6 +6,8 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_ghost</sprite>
     <sprites name="Tiles">
       <sprite>sprites\spr_tile_cross</sprite>
       <sprite>sprites\spr_tile_t</sprite>
@@ -26,12 +28,16 @@
     <script>scripts\scr_init_tile_paths.gml</script>
     <script>scripts\scr_place_tile.gml</script>
     <script>scripts\scr_tile_is_valid_placement.gml</script>
+    <script>scripts\scr_tile_update_neighbours.gml</script>
+    <script>scripts\scr_move_ghosts.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_deck</object>
     <object>objects\obj_tile_in_deck</object>
     <object>objects\obj_tile</object>
     <object>objects\obj_controller</object>
+    <object>objects\obj_player</object>
+    <object>objects\obj_ghost</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>

@@ -12,6 +12,8 @@ t.sprite_index = choose(
 
 t.image_angle = choose(0, 1, 2, 3)*90;
 
+t.hasGhost = floor(random(1.2));
+
 ds_list_add(argument0.tileList, t);
 
 scr_update_deck_top_second(argument0);

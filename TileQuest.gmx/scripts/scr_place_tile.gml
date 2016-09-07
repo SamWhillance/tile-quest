@@ -4,3 +4,8 @@ var newTile = instance_create(scr_gridify(argument0), scr_gridify(argument1), ob
 newTile.sprite_index = argument2;
 newTile.image_angle = argument3;
 with(newTile)scr_init_tile_paths();
+
+// Update all neighbours
+with(obj_tile)scr_tile_update_neighbours();
+
+return newTile;
