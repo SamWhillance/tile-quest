@@ -23,11 +23,15 @@
     <script>scripts\scr_delete_top_tile_from_deck.gml</script>
     <script>scripts\scr_gridify.gml</script>
     <script>scripts\scr_update_deck_top_second.gml</script>
+    <script>scripts\scr_init_tile_paths.gml</script>
+    <script>scripts\scr_place_tile.gml</script>
+    <script>scripts\scr_tile_is_valid_placement.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_deck</object>
     <object>objects\obj_tile_in_deck</object>
     <object>objects\obj_tile</object>
+    <object>objects\obj_controller</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>

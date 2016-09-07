@@ -15,3 +15,5 @@ t.image_angle = choose(0, 1, 2, 3)*90;
 ds_list_add(argument0.tileList, t);
 
 scr_update_deck_top_second(argument0);
+
+with(t)scr_init_tile_paths();

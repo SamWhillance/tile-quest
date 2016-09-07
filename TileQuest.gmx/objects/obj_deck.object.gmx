@@ -33,7 +33,7 @@ top = noone;
 second = noone;
 
 /// Create tiles
-repeat(5){
+repeat(15){
     scr_add_random_tile_to_deck(id);
 }
 
@@ -71,14 +71,14 @@ if (dragging){
     var ry = scr_gridify(mouse_y);
     
     // Check placement
-
-    // Create tile object
-    var newTile = instance_create(rx, ry, obj_tile);
-    newTile.sprite_index = top.sprite_index;
-    newTile.image_angle = top.image_angle;
-    
-    // Remove tile from deck
-    scr_delete_top_tile_from_deck(id);
+    if (scr_tile_is_valid_placement(rx, ry, top)){
+        
+        // Create tile object
+        scr_place_tile(rx, ry, top.sprite_index, top.image_angle);
+        
+        // Remove tile from deck
+        scr_delete_top_tile_from_deck(id);
+    }
 }
 </string>
           </argument>
@@ -142,7 +142,9 @@ if (ds_list_size(tileList) &gt;= 1 &amp;&amp; top != noone &amp;&amp; instance_e
         
         var rx = scr_gridify(mouse_x);
         var ry = scr_gridify(mouse_y);
-        draw_sprite_ext(top.sprite_index, 0, rx, ry, 1.1, 1.1, top.image_angle+5, c_white, 0.9);
+        var color = c_white;
+        if (!scr_tile_is_valid_placement(rx, ry, top))color = c_red;
+        draw_sprite_ext(top.sprite_index, 0, rx, ry, 1.1, 1.1, top.image_angle+5, color, 0.9);
     } else {
         draw_sprite_ext(top.sprite_index, 0, x, y, 1, 1, top.image_angle, c_white, 1); 
     }
